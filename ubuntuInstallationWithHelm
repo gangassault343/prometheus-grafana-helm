@@ -18,6 +18,9 @@ kubectl get pods
 Step 5 - port-forward
 nohup kubectl port-forward --address 0.0.0.0 svc/monitoring-grafana 3000:80 > grafana-port-forward.log 2>&1 &
 kubectl port-forward --address 0.0.0.0 svc/monitoring-grafana 3000:80
+#Get pasword Cmd
+kubectl --namespace default get secrets monitoring-grafana -o jsonpath="{.data.admin-password}" | base64 -d ; echoho
+
 
 step-6
 open ec2ip:3000

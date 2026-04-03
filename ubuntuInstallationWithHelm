@@ -16,7 +16,8 @@ Step 4 — Check Pods
 kubectl get pods
 
 Step 5 - port-forward
-kubectl port-forward --address 0.0.0.0 svc/monitoring-grafana 3000:8080
+nohup kubectl port-forward --address 0.0.0.0 svc/monitoring-grafana 3000:80 > grafana-port-forward.log 2>&1 &
+kubectl port-forward --address 0.0.0.0 svc/monitoring-grafana 3000:80
 
 step-6
 open ec2ip:3000

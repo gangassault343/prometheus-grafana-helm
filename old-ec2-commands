@@ -1,0 +1,365 @@
+ 1  docker ps
+    2  sudo apt update && sudo apt upgrade -y
+    3  sudo apt update
+    4  sudo apt install ca-certificates curl
+    5  sudo install -m 0755 -d /etc/apt/keyrings
+    6  sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+    7  sudo chmod a+r /etc/apt/keyrings/docker.asc
+    8  sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
+    9  Types: deb
+   10  URIs: https://download.docker.com/linux/ubuntu
+   11  Suites: $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}")
+   12  Components: stable
+   13  Signed-By: /etc/apt/keyrings/docker.asc
+   14  EOF
+   15  sudo apt update
+   16  sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+   17  sudo systemctl enable docker
+   18  sudo usermod -aG docker $USER && newgrp docker
+   19  sudo systemctl status docker
+   20  curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+   21  chmod +x kubectl
+   22  sudo mv kubectl /usr/local/bin/
+   23  kubectl version --client
+   24  curl -Lo ./kind https://kind.sigs.k8s.io/dl/latest/kind-linux-amd64
+   25  chmod +x kind
+   26  sudo mv kind /usr/local/bin/
+   27  kind --version
+   28  kubectl get nodes
+   29  kubectl get pod
+   30  kind create cluster
+   31  kubectl get nodes
+   32  nano kind-config.yaml
+   33  kind create cluster --config kind-config.yaml 
+   34  nano kind-config.yaml
+   35  kind delete cluster kind
+   36  kind delete cluster
+   37  kind create cluster --config kind-config.yaml 
+   38  nano kind-config.yaml
+   39  kind create cluster --config kind-config.yaml 
+   40  kubectl get nodes
+   41  pwd
+   42  git clone https://github.com/gangassault343/kubernetes-php.git
+   43  cd kubernetes-php/
+   44  ls
+   45  kubectl apply -f mysqldb-config.yaml 
+   46  kubectl apply -f mysql-deployment.yaml 
+   47  kubectl apply -f php-deployment.yaml 
+   48  kubectl get pod
+   49  kubectl get pod -o wide
+   50  kubectl get node -o wide
+   51  kubectl get pod -o wide
+   52  nohup kubectl port-forward svc/php-service 8080:80 --address=0.0.0.0 > port-forward.log 2>&1 &
+   53  clear
+   54  kubectl get pods -o wide
+   55  sudo netstat -tulnp
+   56  sudo ss -tulnp
+   57  k get po
+   58  alias k=kubectl
+   59  k get po
+   60  alias !=sudo apt-get update 
+   61  k get po
+   62  k get po -o wide
+   63  ls
+   64  cd kubernetes-php/
+   65  ls
+   66  cd ..
+   67  ci kind-config.yaml 
+   68  vi kind-config.yaml 
+   69  cd kubernetes-php/
+   70  ls
+   71  vi php-deployment.yaml 
+   72  vi mysql-deployment.yaml 
+   73  cat mysql-deployment.yaml 
+   74  nano mysql-deployment.yaml 
+   75  cat mysql-deployment.yaml 
+   76  echo "hi" > mysql-deployment.yaml 
+   77  nano mysql-deployment.yaml 
+   78  k apply -f mysql-deployment.yaml 
+   79  echo "hi" > mysql-deployment.yaml 
+   80  nano mysql-deployment.yaml 
+   81  k apply -f mysql-deployment.yaml 
+   82  k get po
+   83  k delete pod mysql-74fd8c4978-v7xr9
+   84  k get po
+   85  echo "hi" > mysql-deployment.yaml 
+   86  nano mysql-deployment.yaml 
+   87  k apply -f mysql-deployment.yaml 
+   88  k get po
+   89  k delete pod mysql-74fd8c4978-7m677
+   90  k get po
+   91  echo "hi" > mysql-deployment.yaml 
+   92  nano mysql-deployment.yaml 
+   93  k get deployment
+   94  k delete  deployment mysql
+   95  k delete  deployment php-crud
+   96  k get deployment
+   97  k apply -f pjp-deployment.yaml
+   98  k apply -f php-deployment.yaml
+   99  k apply -f mysql-deployment.yaml
+  100  nohup kubectl port-forward svc/php-service 8080:80 --address=0.0.0.0 > port-forward.log 2>&1 &
+  101  vi pvc.yaml
+  102  k apply -f pvc.yaml
+  103  k get pvc
+  104  vi pv.yaml
+  105  kubectl apply -f pv.yaml
+  106  k get pc
+  107  k get pv
+  108  k get pvc
+  109  docker exec -it kind-control-plane mkdir -p /data/mysql
+  110  kubectl get pv
+  111  kubectl get pvc
+  112  k get pvc
+  113  k delete pvc mysql-pvc
+  114  k apply -f pvc.yaml
+  115  k get pvc
+  116  history | grep echo
+  117  vi mysql-deployment.yaml 
+  118  k apply -f mysql-deployment.yaml 
+  119  k rollout restart mysql-deployment.yaml 
+  120  k rollout restart deployment mysql-deployment 
+  121  k get deploment
+  122  k get deployment
+  123  k rollout restart deployment mysql
+  124  ls
+  125  clear
+  126  k get po
+  127  k get dvc
+  128  k get svc
+  129  k get deployment
+  130  k delete deployment mysql
+  131  k delete deployment php-crud
+  132  k delete service mysql-service
+  133  k delete service php-service
+  134  k get po
+  135  clear
+  136  ls
+  137  k apply -f mysqldb-config.yaml 
+  138  k apply -f mysqldb-deployment.yaml 
+  139  k apply -f mysql-deployment.yaml 
+  140  k apply -f php-deployment.yaml 
+  141  k get po
+  142  nohup kubectl port-forward svc/php-service 8080:80 --address=0.0.0.0 > port-forward.log 2>&1 &
+  143  curl localhost
+  144  k get po
+  145  kubectl port-forward svc/php-service 8080:80 --address=0.0.0.0
+  146  nohup kubectl port-forward svc/php-service 8080:80 --address=0.0.0.0 > port-forward.log 2>&1 &
+  147  nohup kubectl --kubeconfig=/home/ubuntu/.kube/config port-forward svc/php-service 8080:80 --address=0.0.0.0 > port-forward.log 2>&1 &
+  148  kubectl port-forward svc/php-service 8080:80 --address=0.0.0.0
+  149  ps aux | grep port-forward
+  150  lsof -i :8080
+  151  kubectl kill 138814
+  152  kill 138814
+  153  lsof -i :8080
+  154  kill 138814
+  155  lsof -i :8080
+  156  netstat -tulnp | grep 8080
+  157  kill -9 138814
+  158  lsof -i :8080
+  159  nohup kubectl port-forward svc/php-service 8080:80 --address=0.0.0.0 > port-forward.log 2>&1 &
+  160  ls
+  161  echo "p" > pv.yaml 
+  162  vi pv.yaml 
+  163  echo "p" > pvc.yaml 
+  164  vi pvc.yaml 
+  165  docker exec -it kind-control-plane mkdir -p /data/mysql
+  166  mv mysqldb-config.yaml mysqldb-config1.yaml 
+  167  ls
+  168  mv mysqldb-config1.yaml mysqldb-config.yaml 
+  169  mv mysql-deployment.yaml mysql-deployment1.yaml 
+  170  ls
+  171  vi mysql-deployment.yaml 
+  172  kubectl apply -f pv.yaml
+  173  kubectl apply -f pvc.yaml
+  174  k get pvc
+  175  kubectl apply -f mysqldb-config.yaml
+  176  kubectl apply -f mysql-deployment.yaml
+  177  k get pods
+  178  kubectl get pv
+  179  kubectl get pvc
+  180  k delete pod mysql-74fd8c4978-mw58w
+  181  k get pods
+  182  kubectl get pods
+  183  kubectl logs mysql-74fd8c4978-w9hpc 
+  184  kubectl get pods
+  185  k delete pod mysql-74fd8c4978-w9hpc
+  186  kubectl get pods
+  187  kubectl get pods -o wide
+  188  kubectl get pods
+  189  k delete pod mysql-74fd8c4978-scqvd
+  190  kubectl get pods -o wide
+  191  kubectl describe pod mysql-74fd8c4978-gfrmk
+  192  apiVersion: apps/v1
+  193  kind: Deployment
+  194  metadata:
+  195  spec:
+  196  rm -rf  mysql-deployment.yaml 
+  197  vi  mysql-deployment.yaml 
+  198  kubectl apply -f mysql-deployment.yaml
+  199  kubectl rollout restart deployment mysql
+  200  kubectl delete deployment mysql
+  201  kubectl delete pvc mysql-pvc
+  202  kubectl delete pv mysql-pv
+  203  kubectl apply -f pv.yaml
+  204  kubectl apply -f pvc.yaml
+  205  kubectl apply -f mysqldb-config.yaml
+  206  kubectl apply -f mysql-deployment.yaml
+  207  kubectl get pods
+  208  kubectl describe pod mysql-54b65d7788-6kgs9
+  209  k get po
+  210  k delete pod mysql-54b65d7788-6kgs9
+  211  k get po
+  212  k delete pod mysql-54b65d7788-mvdds
+  213  k get po
+  214  clear
+  215  cat pv.yaml 
+  216  cat pvc.yaml 
+  217  ls
+  218  kubectl get po
+  219  kubectl describe pod mysql-54b65d7788-t85g7
+  220  kubectl get pods -n kube-system | grep ebs
+  221  kubectl get pods 
+  222  kubectl get pods | grep ebs
+  223  k get po
+  224  alias k=kubectl
+  225  k get po
+  226  ls
+  227  cd kubernetes-php/
+  228  ls
+  229  cat pv.yaml 
+  230  cd ../..
+  231  ls
+  232  cd ..
+  233  ls
+  234  k describe nodes
+  235  k get nodes
+  236  k describe node kind-control-plane
+  237  k get po
+  238  cat pv.yaml 
+  239  cd home/ubuntu/kubernetes-php/
+  240  cat pv.yaml 
+  241  docker ps
+  242  docker exec -t kind-worker /bin/bash
+  243  docker exec -t kind-worker2 /bin/bash
+  244  docker exec -t kind-control-plane /bin/bash
+  245  kubectl get nodes -o wide
+  246  kubectl get pods -o wide
+  247  kubectl describe pod mysql-54b65d7788-t85g7
+  248  docker exec -t kind-worker2 /bin/bash
+  249  ls -ltr
+  250  cd kubernetes-php/
+  251  ls -ltr
+  252  cat pv.yaml 
+  253  cat pvc.yaml 
+  254  ls -ltr
+  255  cat mysql-deployment.yaml 
+  256  cat pvc.yaml 
+  257  cat pv.yaml 
+  258  cd ~
+  259  cd ..
+  260  ls
+  261  cd home/ubuntu/
+  262  cd kubernetes-php/
+  263  ls
+  264  k get po
+  265  kubectl get node
+  266  kubectl get po
+  267  kubectl describe pod mysql-54b65d7788-t85g7
+  268  cat mysql-deployment.yaml 
+  269  kubectl exec -it  mysql-54b65d7788-t85g7 -- ls -ltr /var/lib/mysql
+  270  kubectl delete pod mysql-54b65d7788-t85g7
+  271  k get po
+  272  kubectl get po
+  273  kubectl exec -it mysql-54b65d7788-7zkg9 -- ls -ltr /var/lib/mysql
+  274  cd .. .. ..
+  275  cd ../../..
+  276  pwd
+  277  ls
+  278  cd /home/ubuntu/
+  279  cd kubernetes-php/
+  280  ls
+  281  car init.sql 
+  282  cat init.sql 
+  283  kubectl get po -o wide
+  284  history | grep create
+  285  ls ../
+  286  cat ../kind-config.yaml 
+  287  vi pv
+  288  vi pv.yaml
+  289  vi mysql-deployment.yaml 
+  290  kubectl get svc
+  291  ls
+  292  vi mysql-deployment1.yaml 
+  293  vi mysql-deployment.yaml 
+  294  kubectl get nodes
+  295  ls
+  296  cd kubernetes-php/
+  297  mkdir prometheus
+  298  cd prometheus/
+  299  curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+  300  helm version
+  301  helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+  302  helm repo update
+  303  helm install monitoring prometheus-community/kube-prometheus-stack
+  304  kubectl get pods
+  305  kubectl describe pod monitoring-grafana-549d664fdb-ptpxz
+  306  df -h
+  307  docker system prune -a -f
+  308  df -h
+  309  docker exec -it kind-control-plane crictl rmi --prune
+  310  docker exec -it kind-worker crictl rmi --prune
+  311  docker exec -it kind-worker2 crictl rmi --prune
+  312  df -h
+  313  kubectl delete pod monitoring-grafana-549d664fdb-ptpxz
+  314  kubectl get po
+  315  kubectl delete pod monitoring-kube-prometheus-operator-6c5fc6df46-c7dsz monitoring-kube-state-metrics-67d5f7bf68-q5mvd
+  316  kubectl get po
+  317  df -h
+  318  kubectl get po
+  319  df -h
+  320  reboot
+  321  sudo reboot -y
+  322  sudo reboot 
+  323  kubectl get pd
+  324  kubectl get po
+  325  df -h
+  326  kubectl port-forward svc/monitoring-grafana 3000:80
+  327  curl localhost:3000
+  328  kubectl port-forward svc/monitoring-grafana 3000:80
+  329  kubectl port-forward --address 0.0.0.0 svc/monitoring-grafana 3000:80
+  330  kubectl get secret monitoring-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+  331  kubectl get secrets | grep grafana
+  332  kubectl create secret generic monitoring-grafana   --from-literal=admin-password=admin123   --dry-run=client -o yaml | kubectl apply -f -
+  333  kubectl rollout restart deployment monitoring-grafana
+  334  kubectl port-forward --address 0.0.0.0 svc/monitoring-grafana 3000:80
+  335  kubectl get secret monitoring-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+  336  kubectl create secret generic monitoring-grafana   --from-literal=admin-user=admin   --from-literal=admin-password=admin123
+  337  kubectl delete secret monitoring-grafana
+  338  kubectl create secret generic monitoring-grafana   --from-literal=admin-user=admin   --from-literal=admin-password=admin123
+  339  kubectl delete pod -l app.kubernetes.io/name=grafana
+  340  kubectl get po
+  341  df -h
+  342  kubectl port-forward --address 0.0.0.0 svc/monitoring-grafana 3000:80
+  343  nohup kubectl port-forward --address 0.0.0.0 svc/monitoring-grafana 3000:80 > grafana-port.log 2>&1 &
+  344  echo "# EC2-prometheus" >> README.md
+  345  git init
+  346  git add README.md
+  347  git commit -m "first commit"
+  348  git branch -M main
+  349  git remote add origin https://github.com/gangassault343/EC2-prometheus.git
+  350  git push -u origin main
+  351  rm -rf .git
+  352  helm upgrade monitoring prometheus-community/kube-prometheus-stack   --set grafana.grafana.ini.auth.anonymous.enabled=true   --set grafana.grafana.ini.auth.anonymous.org_role=Viewer
+  353  kubectl rollout restart deployment monitoring-grafana
+  354  kubectl get po
+  355  nohup kubectl port-forward --address 0.0.0.0 svc/monitoring-grafana 3000:80 > grafana-port.log 2>&1
+  356  nohup kubectl port-forward svc/php-service 8080:80 --address=0.0.0.0 > port-forward.log 2>&1 &
+  357  nohup kubectl port-forward --address 0.0.0.0 svc/monitoring-grafana 3000:80 > grafana-port.log 2>&1 &
+  358  lsof -i 3000
+  359  lsof -i :3000
+  360  kill -9 10261
+  361  nohup kubectl port-forward --address 0.0.0.0 svc/monitoring-grafana 3000:80 > grafana-port.log 2>&1 &
+  362  kubectl get po
+  363  kubectl get deployment
+  364  ls
+  365  cd kubernetes-php/
